@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       {/* <Welcome name="JJ One One" /> */}
-      <Clock date={new Date()} />
+      <Clock />
     </div>
   );
 }
