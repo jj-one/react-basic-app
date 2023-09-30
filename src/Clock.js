@@ -13,6 +13,9 @@ class Clock extends React.Component {
     }, 1000);
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timerId);
+  }
 
   render() {
     return <h1>{this.state.date.toLocaleString()}</h1>;
