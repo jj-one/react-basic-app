@@ -1,6 +1,8 @@
 import './App.css';
+import LoginController from './LoginController';
+// import Greeting from './Greeting';
 // import Clock from './Clock';
-import ToggleButton from './ToggleButton';
+// import ToggleButton from './ToggleButton';
 // import Welcome from './Welcome';
 
 function App() {
@@ -8,7 +10,10 @@ function App() {
     <div className="App">
       {/* <Welcome name="JJ One One" /> */}
       {/* <Clock /> */}
-      <ToggleButton />
+      {/* <ToggleButton /> */}
+      {/* <Greeting isLoggedIn={false}/> */}
+
+      <LoginController />
     </div>
   );
 }
