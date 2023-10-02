@@ -7,28 +7,43 @@ class UserForm extends React.Component {
     this.state = {userName: "", description: "", gender: "female", "acceptTerms": false};
   }
 
+  // handleChange = (e) => {
+  //   // console.log(e.target.value);
+  //   this.setState({userName: e.target.value});
+  // };
+
+  // handleGenderChange = (e) => {
+  //   this.setState((prevState) => {
+  //     console.log(`new gender: ${e.target.value}`);
+  //     if(e.target.value === "" || e.target.value === "Choose...") {
+  //       return {gender: prevState.gender};
+  //     }
+  //     return {gender: e.target.value};
+  //   });
+  // };
+
+  // handleDescriptionChange = (e) => {
+  //   this.setState({description: e.target.value});
+  // };
+
+  // handleAcceptTermsChange = (e) => {
+  //   this.setState({acceptTerms: e.target.checked});
+  // };
+
   handleChange = (e) => {
-    // console.log(e.target.value);
-    this.setState({userName: e.target.value});
-  };
-
-  handleGenderChange = (e) => {
     this.setState((prevState) => {
-      console.log(`new gender: ${e.target.value}`);
-      if(e.target.value === "" || e.target.value === "Choose...") {
-        return {gender: prevState.gender};
+      if (e.target.name === "gender") {
+        if (e.target.value === "" || e.target.value === "Choose...") {
+          return {gender: prevState.gender};
+        }
+        return {gender: e.target.value};
       }
-      return {gender: e.target.value};
+      else if (e.target.name === "acceptTerms") {
+        return {acceptTerms: e.target.checked};
+      }
+      return {[e.target.name]: e.target.value};
     });
-  };
-
-  handleDescriptionChange = (e) => {
-    this.setState({description: e.target.value});
-  };
-
-  handleAcceptTermsChange = (e) => {
-    this.setState({acceptTerms: e.target.checked});
-  };
+  }
 
   handleSubmit = (e) => {
     e.preventDefault();
@@ -43,13 +58,13 @@ class UserForm extends React.Component {
       <div>
         <label>
           Name: 
-          <input type="text" value={this.state.userName} onChange={this.handleChange} />
+          <input type="text" name="userName" value={this.state.userName} onChange={this.handleChange} />
         </label>
       </div>
       <div>
         <label>
           Gender: 
-          <select value={this.state.gender} onChange={this.handleGenderChange}>
+          <select name="gender" value={this.state.gender} onChange={this.handleChange}>
             <option>Choose...</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -59,13 +74,13 @@ class UserForm extends React.Component {
       <div>
         <label>
           Description: 
-          <textarea rows="5" value={this.state.description} onChange={this.handleDescriptionChange} ></textarea>
+          <textarea name="description" rows="5" value={this.state.description} onChange={this.handleChange} ></textarea>
         </label>
       </div>
       <div>
         <label>
           Accept Terms: 
-          <input type="checkbox" checked={this.state.acceptTerms} onChange={this.handleAcceptTermsChange} />
+          <input type="checkbox" name="acceptTerms" checked={this.state.acceptTerms} onChange={this.handleChange} />
         </label>
       </div>
       <div>
